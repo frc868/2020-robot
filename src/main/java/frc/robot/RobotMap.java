@@ -44,6 +44,10 @@ public class RobotMap {
         public static final boolean MOTOR_IS_INVERTED = false; // TODO: untested
     }
 
+    public static class CollisionDetection {
+        public static final I2C.Port NAVX = I2C.Port.kMXP;
+    }
+
     public static class WheelOfFortune {
         public static final int MOTOR = 21; // TODO: untested
         public static final I2C.Port COLOR_SENSOR = I2C.Port.kMXP; // TODO: untested
