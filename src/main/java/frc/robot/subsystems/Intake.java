@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import frc.robot.RobotMap;
 import frc.robot.helpers.Helper;
 
@@ -12,14 +14,12 @@ import frc.robot.helpers.Helper;
  */ 
 public class Intake {
     private static Intake instance;
-    private WPI_TalonSRX primary;
-    private WPI_TalonSRX secondary;
+    private CANSparkMax primary;
 
     private Intake() {
-        primary = new WPI_TalonSRX(RobotMap.Intake.PRIMARY);
-        secondary = new WPI_TalonSRX(RobotMap.Intake.SECONDARY);
+        primary = new CANSparkMax(RobotMap.Intake.MOTOR, MotorType.kBrushless);
 
-        secondary.follow(primary);
+        primary.setInverted(RobotMap.Intake.MOTOR_IS_INVERTED);
     }
 
     public static Intake getInstance() {

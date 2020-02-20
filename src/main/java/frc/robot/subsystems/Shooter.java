@@ -12,6 +12,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMaxLowLevel.PeriodicFrame;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
@@ -30,17 +31,19 @@ public class Shooter {
     private CANSparkMax secondary;
     private CANPIDController pid;
 
-    private double kP = 0, kI = 0, kD = 0;
+    private double kP = 0.00115, kI = 0, kD = 0;
     private double kIa = 0, kIz = 0, kFF = 0;
     private double kMaxOutput = 1;
     private double kMinOutput = -1;
 
-    private double setpoint = 0;
+    private double setpoint = 2000;
 
     private Shooter() {
         // initialise SMaxes
         primary = new CANSparkMax(RobotMap.Shooter.PRIMARY, MotorType.kBrushless);
         secondary = new CANSparkMax(RobotMap.Shooter.SECONDARY, MotorType.kBrushless);
+
+        primary.setPeriodicFramePeriod(PeriodicFrame.kStatus2, 20);
         primary.setInverted(RobotMap.Shooter.PRIMARY_IS_INVERTED);
         secondary.setInverted(RobotMap.Shooter.SECONDARY_IS_INVERTED);
 
@@ -108,15 +111,23 @@ public class Shooter {
      * Sets the speed of the motor manually.
      */
     public void setSpeed(double speed) {
-        this.disable();
+        //this.disable();
         primary.set(speed);
+    }
+
+    public void setPrimarySpeed(double speed) {
+        primary.set(speed);
+    }
+
+    public void setSecondarySpeed(double speed) {
+        secondary.set(speed);
     }
 
     /**
      * Stops the motor manually.
      */
     public void stop() {
-        this.disable();
+        //this.disable();
         primary.stopMotor();
     }
 

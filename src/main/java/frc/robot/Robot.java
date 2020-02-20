@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousPeriodic() {
-        turret.track();
+        Robot.drivetrain.setSpeed(0.3, 0.3);
         Scheduler.getInstance().run();
     }
 
@@ -67,6 +67,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
+        turret.stop();
         OI.update();
         Scheduler.getInstance().run();
     }

@@ -6,7 +6,7 @@ import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Solenoid;
+//import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.Robot;
@@ -26,7 +26,7 @@ public class WheelOfFortune {
     }
 
     private WPI_TalonSRX primary;
-    private Solenoid actuator;
+    //private Solenoid actuator;
 
     private ColorSensorV3 colorSensor;
     private ColorMatch colorMatch;
@@ -48,7 +48,7 @@ public class WheelOfFortune {
 
     private WheelOfFortune() {
         primary = new WPI_TalonSRX(RobotMap.WheelOfFortune.MOTOR);
-        actuator = new Solenoid(RobotMap.WheelOfFortune.ACTUATOR);
+        //actuator = new Solenoid(RobotMap.WheelOfFortune.ACTUATOR);
 
         colorSensor = new ColorSensorV3(RobotMap.WheelOfFortune.COLOR_SENSOR);
         colorMatch = new ColorMatch();
@@ -285,7 +285,7 @@ public class WheelOfFortune {
      * @author hrl
      */
     public void enable() {
-        actuator.set(RobotMap.WheelOfFortune.ACTUATOR_ENABLED_STATE);
+        //actuator.set(RobotMap.WheelOfFortune.ACTUATOR_ENABLED_STATE);
     }
 
     /**
@@ -293,7 +293,7 @@ public class WheelOfFortune {
      * @author hrl
      */
     public void disable() {
-        actuator.set(!RobotMap.WheelOfFortune.ACTUATOR_ENABLED_STATE);
+        //actuator.set(!RobotMap.WheelOfFortune.ACTUATOR_ENABLED_STATE);
     }
 
     /**
@@ -301,7 +301,7 @@ public class WheelOfFortune {
      * @author hrl
      */
     public void toggle() {
-        actuator.set(!actuator.get());
+        //actuator.set(!actuator.get());
     }
 
     /**
