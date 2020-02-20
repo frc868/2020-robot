@@ -31,12 +31,12 @@ public class Intake {
     }
     
     /**
-     * Sets the speed for the primary motor (secondary motor follows) \[]
-     * 
+     * Sets the speed for the primary motor (secondary motor follows)
+     *  
      * @param speed the speed to set from -1 to 1
      */
     public void setSpeed(double speed) {
-        primary.set(Helper.boundValue(speed, -1, 1));
+        primary.set(speed);
     }
 
     /** 

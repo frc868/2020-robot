@@ -33,8 +33,8 @@ public class RobotMap {
     public static class Hopper {
         public static final double ENC_COUNT_PER_CYCLE = 9127; // TODO: untested
         public static final double BELT_SPEED = 0.4; // TODO: untested
-        public static final double INDEXER_SPEED = 0.3; // TODO: untested
-        public static final double BLUE_SPEED = 0.1;
+        public static final double INDEXER_SPEED = 0.7; // TODO: untested
+        public static final double BLUE_SPEED = 0.2;
 
         public static class Limit {
             public static final int BOTTOM_LEFT = 0; // TODO: untested

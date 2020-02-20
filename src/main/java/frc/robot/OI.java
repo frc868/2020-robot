@@ -21,23 +21,26 @@ public class OI {
     public static void update() {
         // HUGE MEGA TODO: figure out controls with driver and operator
         // GENERAL CONTROLS/CONTROL METHODS
-        Robot.drivetrain.arcadeDrive(1);
+        // Robot.drivetrain.arcadeDrive(1);
 
         // DRIVER CONTROLS
-        driver.bRB.whileHeld(() -> Robot.intake.setSpeed(0.7));
-        driver.bRB.whenReleased(() -> Robot.intake.setSpeed(0));
+        // driver.bRB.whileHeld(() -> Robot.intake.setSpeed(0.7));
+        // driver.bRB.whenReleased(() -> Robot.intake.setSpeed(0));
 
         driver.bRB.whileHeld(() -> Robot.hopper.shoot());
         driver.bRB.whenReleased(() -> Robot.hopper.stop());
+        driver.bA.whenPressed(() -> Robot.intake.setSpeed(0.5));
+        driver.bB.whenPressed(() -> Robot.intake.setSpeed(0));
+        //driver.bA.whenReleased(() -> Robot.intake.setSpeed(0));
 
-        driver.bA.whileHeld(() -> {
-            Robot.shooter.setSpeed(0.7);
-            Robot.hopper.shoot();
-        });
-        driver.bA.whenReleased(() -> {
-            Robot.shooter.setSpeed(0);
-            Robot.hopper.stop();
-        });
+        // driver.bA.whileHeld(() -> {
+        //     Robot.shooter.setSpeed(0.7);
+        //     Robot.hopper.shoot();
+        // });
+        // driver.bA.whenReleased(() -> {
+        //     Robot.shooter.setSpeed(0);
+        //     Robot.hopper.stop();
+        // });
 
         updateSD();
     }
