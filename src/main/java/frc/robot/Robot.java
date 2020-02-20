@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.sensors.Camera;
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
     public static Shooter shooter = Shooter.getInstance();
     public static Turret turret = Turret.getInstance();
     public static WheelOfFortune wheel = WheelOfFortune.getInstance();
+    public static Compressor compressor = new Compressor();
     
     /**
      * This function is run when the robot is first started up and should be used
