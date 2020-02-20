@@ -30,13 +30,14 @@ public class OI {
         driver.bRB.whileHeld(() -> Robot.hopper.shoot());
         driver.bRB.whenReleased(() -> Robot.hopper.stop());
 
-        driver.bA.whileHeld(() -> Robot.shooter.setSpeed(0.7));
-        driver.bA.whenReleased(() -> Robot.shooter.setSpeed(0));
-
-        driver.bA.whileHeld(() -> Robot.hopper.shoot());
-        driver.bA.whenReleased(() -> Robot.hopper.stop());
-
-        
+        driver.bA.whileHeld(() -> {
+            Robot.shooter.setSpeed(0.7);
+            Robot.hopper.shoot();
+        });
+        driver.bA.whenReleased(() -> {
+            Robot.shooter.setSpeed(0);
+            Robot.hopper.stop();
+        });
 
         updateSD();
     }
