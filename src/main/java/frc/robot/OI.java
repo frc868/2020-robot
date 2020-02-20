@@ -24,11 +24,19 @@ public class OI {
         Robot.drivetrain.arcadeDrive(1);
 
         // DRIVER CONTROLS
-        driver.bA.whileHeld(() -> Robot.intake.setSpeed(0.7));
-        driver.bA.whenReleased(() -> Robot.intake.setSpeed(0));
+        driver.bRB.whileHeld(() -> Robot.intake.setSpeed(0.7));
+        driver.bRB.whenReleased(() -> Robot.intake.setSpeed(0));
 
-        driver.bB.whileHeld(() -> Robot.shooter.setSecondarySpeed(0.7));
-        driver.bB.whenReleased(() -> Robot.shooter.setSecondarySpeed(0));
+        driver.bRB.whileHeld(() -> Robot.hopper.shoot());
+        driver.bRB.whenReleased(() -> Robot.hopper.stop());
+
+        driver.bA.whileHeld(() -> Robot.shooter.setSpeed(0.7));
+        driver.bA.whenReleased(() -> Robot.shooter.setSpeed(0));
+
+        driver.bA.whileHeld(() -> Robot.hopper.shoot());
+        driver.bA.whenReleased(() -> Robot.hopper.stop());
+
+        
 
         updateSD();
     }

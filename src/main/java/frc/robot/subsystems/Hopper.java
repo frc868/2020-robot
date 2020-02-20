@@ -23,6 +23,7 @@ public class Hopper {
 
     private WPI_TalonSRX belt;
     private WPI_TalonSRX feeder;
+    private WPI_TalonSRX blueWheels;
 
     // a state variable to control the number of balls currently in the hopper
     private int count = 3;
@@ -46,6 +47,7 @@ public class Hopper {
 
         belt = new WPI_TalonSRX(RobotMap.Hopper.Motor.BELT);
         feeder = new WPI_TalonSRX(RobotMap.Hopper.Motor.FEEDER);
+        blueWheels = new WPI_TalonSRX(RobotMap.Hopper.Motor.BLUE_WHEELS);
         belt.setInverted(RobotMap.Hopper.Motor.BELT_IS_INVERTED);
         feeder.setInverted(RobotMap.Hopper.Motor.INDEXER_IS_INVERTED);
 
@@ -69,9 +71,10 @@ public class Hopper {
     /**
      * Stops the belt and indexer motors. Untested.
      */
-    private void stop() {
+    public void stop() {
         belt.set(0);
         feeder.set(0);
+        blueWheels.set(0);
     }
 
     /**
@@ -161,6 +164,7 @@ public class Hopper {
         driverOverride = true;
         belt.set(RobotMap.Hopper.BELT_SPEED);
         feeder.set(RobotMap.Hopper.INDEXER_SPEED);
+        blueWheels.set(RobotMap.Hopper.BLUE_SPEED);
     }
 
     /**
@@ -171,8 +175,7 @@ public class Hopper {
         driverOverride = false;
     }
 
-    /**
-     * returns count of how many balls are currently held in the hopper
+    /**count of how many balls are currently held in the hopper
      * @return count
      */
     public int getBallCount() {
