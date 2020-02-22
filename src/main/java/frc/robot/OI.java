@@ -21,16 +21,34 @@ public class OI {
     public static void update() {
         // HUGE MEGA TODO: figure out controls with driver and operator
         // GENERAL CONTROLS/CONTROL METHODS
-        // Robot.drivetrain.arcadeDrive(1);
+        Robot.drivetrain.arcadeDrive(1);
 
         // DRIVER CONTROLS
         // driver.bRB.whileHeld(() -> Robot.intake.setSpeed(0.7));
         // driver.bRB.whenReleased(() -> Robot.intake.setSpeed(0));
 
-        driver.bRB.whileHeld(() -> Robot.hopper.shoot());
-        driver.bRB.whenReleased(() -> Robot.hopper.stop());
-        driver.bA.whenPressed(() -> Robot.intake.setSpeed(0.5));
-        driver.bB.whenPressed(() -> Robot.intake.setSpeed(0));
+        
+        driver.bRB.whenPressed(() -> {
+            Robot.hopper.shoot();
+        });
+
+        driver.bLB.whenPressed(() -> {
+            Robot.hopper.stop();
+        });
+
+        driver.bX.whenPressed(() -> Robot.intake.setSpeed(1));
+        driver.bY.whenPressed(() -> Robot.intake.setSpeed(0));
+
+        driver.bA.whenPressed(() -> Robot.shooter.setSpeed(0.85));
+        driver.bB.whenPressed(() -> Robot.shooter.setSpeed(0));
+
+        Robot.wheel.setSpeed(driver.getLT());
+
+        driver.dN.whenPressed(() -> Robot.wheel.actuatorUp());
+        driver.dS.whenPressed(() -> Robot.wheel.actuatorDown());
+
+        driver.bMENU.whenPressed(() -> Robot.intake.actuatorDown());
+        driver.bSTART.whenPressed(() -> Robot.intake.actuatorUp());
         //driver.bA.whenReleased(() -> Robot.intake.setSpeed(0));
 
         // driver.bA.whileHeld(() -> {

@@ -3,6 +3,8 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
 import frc.robot.helpers.Helper;
 
@@ -15,11 +17,14 @@ import frc.robot.helpers.Helper;
 public class Intake {
     private static Intake instance;
     private CANSparkMax primary;
+    private static DoubleSolenoid actuator;
 
     private Intake() {
         primary = new CANSparkMax(RobotMap.Intake.MOTOR, MotorType.kBrushless);
 
         primary.setInverted(RobotMap.Intake.MOTOR_IS_INVERTED);
+
+        actuator = new DoubleSolenoid(RobotMap.Intake.ACTUATOR1, RobotMap.Intake.ACTUATOR2);
     }
 
     public static Intake getInstance() {
@@ -45,5 +50,33 @@ public class Intake {
      */
     public double getIntakeSpeed() {
         return primary.get();
+    }
+
+    /**
+     * sets the actuator to the position it is not currently in
+     * @author acr
+     */
+    public void toggle() {
+        if(actuator.get() == Value.kForward) {
+            actuator.set(Value.kReverse);
+        }else if (actuator.get() == Value.kReverse) {
+            actuator.set(Value.kForward);
+        }
+    }
+
+    /**
+     * Raise the intake.
+     * @author acr
+     */
+    public void actuatorUp() {
+        actuator.set(Value.kReverse);
+    }
+
+    /**
+     * Lower the intake.
+     * @author acr
+     */
+    public void actuatorDown() {
+        actuator.set(Value.kForward);
     }
 }
